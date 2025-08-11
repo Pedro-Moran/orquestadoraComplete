@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1754689604866
+Build-Jdk-Spec: 11
+Bundle-Category: library
+Bundle-Description: libreria interna
+Bundle-ManifestVersion: 2
+Bundle-Name: PFMHR010
+Bundle-SymbolicName: PFMHR010-0.6.0
+Bundle-Version: 0.6.0
+Created-By: Apache Maven Bundle Plugin 5.1.9
+Export-Package: com.bbva.pfmh.lib.r010;uses:="com.bbva.pfmh.dto.jcisconn
+ ector.ffmm.commons";version="0.6.0"
+Import-Package: com.bbva.pfmh.dto.jcisconnector.ffmm.commons;version="0.
+ 0",java.lang,java.util
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Tool: Bnd-6.3.1.202206071316

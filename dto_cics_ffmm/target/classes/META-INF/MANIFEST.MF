@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1754170194458
+Build-Jdk-Spec: 11
+Bundle-Category: dto
+Bundle-Description: Deployment unit dto_cics_ffmm of uuaa pfmh
+Bundle-ManifestVersion: 2
+Bundle-Name: PFMHC005
+Bundle-SymbolicName: PFMHC005-0.6.3
+Bundle-Version: 0.6.3
+Created-By: Apache Maven Bundle Plugin 5.1.9
+Export-Package: com.bbva.pfmh.dto.fmc7.constant;version="0.6.3",com.bbva
+ .pfmh.dto.fmc7.ffmm;version="0.6.3",com.bbva.pfmh.dto.fmc7.pague;versio
+ n="0.6.3",com.bbva.pfmh.dto.fmc7.request;version="0.6.3",com.bbva.pfmh.
+ dto.fmc7.response;version="0.6.3";uses:="com.bbva.pfmh.dto.fmc7.ffmm"
+Import-Package: com.bbva.pfmh.dto.fmc7.ffmm;version="0.0",java.io,java.l
+ ang,java.lang.invoke,java.math,java.util
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Tool: Bnd-6.3.1.202206071316

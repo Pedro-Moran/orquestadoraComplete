@@ -1,0 +1,12 @@
+{
+    "component": "r2artifact",
+    "repoName": "onl_orquestadora_ffmm",
+    "uuaa": "pfmh",
+    "slave_label": "apx",
+    "extra_properties": null,
+    "apxrepoBranch": "master",
+    "componentPaaSId": "onl_orquestadora_ffmm",
+    "appPaaSId": "pfmh",
+    "proyectPaaSId": "pe.pfmh.app-id-1268318.dsg",
+    "resource_type": "du_online"
+}

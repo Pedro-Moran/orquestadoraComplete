@@ -1,0 +1,4 @@
+com\bbva\pfmh\lib\r010\impl\PFMHR010Impl.class
+com\bbva\pfmh\lib\r010\impl\cics\FMC7Connection.class
+com\bbva\pfmh\lib\r010\impl\utils\ValidationUtils.class
+com\bbva\pfmh\lib\r010\impl\PFMHR010Abstract.class

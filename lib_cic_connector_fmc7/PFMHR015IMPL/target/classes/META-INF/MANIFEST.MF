@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1754173391898
+Build-Jdk-Spec: 11
+Bundle-Category: library-cics
+Bundle-Description: Deployment unit lib_cic_connector_fmc7 of uuaa pfmh
+Bundle-ManifestVersion: 2
+Bundle-Name: PFMHR015IMPL
+Bundle-SymbolicName: PFMHR015IMPL-0.1.0
+Bundle-Version: 0.1.0
+Created-By: Apache Maven Bundle Plugin 5.1.9
+Import-Package: com.bbva.pfmh.dto.fmc7.ffmm;version="0.0",com.bbva.pfmh.
+ dto.fmc7.pague;version="0.0",com.bbva.pfmh.dto.fmc7.request;version="0.
+ 0",com.bbva.pfmh.dto.fmc7.response;version="0.0",com.bbva.apx.exception
+ .business;version="0.0",com.bbva.elara.configuration.manager.applicatio
+ n;version="0.0",com.bbva.elara.configuration.manager.application.factor
+ y;version="0.0",com.bbva.elara.library;version="0.0",com.bbva.elara.uti
+ lity.interbackend.cics;version="0.0",com.bbva.elara.utility.interbacken
+ d.cics.dto;version="0.0",com.bbva.pfmh.lib.r015;version="0.0",java.lang
+ ,java.lang.invoke,java.math,java.util,java.util.function,java.util.stre
+ am,org.apache.commons.lang.exception;version="0.0",org.slf4j;version="0
+ .0",com.bbva.pfmh.dto.fmc7.constant;version="0.0",com.bbva.elara.aspect
+ ;version="0.0",org.aopalliance.aop;version="0.0",org.osgi.framework;ver
+ sion="0.0",org.springframework.aop;version="0.0",org.springframework.ao
+ p.framework;version="0.0",org.springframework.core;version="0.0",spring
+ ;version="0.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Tool: Bnd-6.3.1.202206071316

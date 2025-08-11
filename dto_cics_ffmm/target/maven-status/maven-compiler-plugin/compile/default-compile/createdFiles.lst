@@ -1,0 +1,10 @@
+com\bbva\pfmh\dto\fmc7\constant\PFMHC005Constant$HostFMC7FieldsIn.class
+com\bbva\pfmh\dto\fmc7\constant\PFMHC005Constant$HostFMC7FieldsOut.class
+com\bbva\pfmh\dto\fmc7\request\FMC7Request.class
+com\bbva\pfmh\dto\fmc7\ffmm\FFMM7.class
+com\bbva\pfmh\dto\fmc7\pague\FFMMPagination.class
+com\bbva\pfmh\dto\fmc7\request\FMC7Request$Builder.class
+com\bbva\pfmh\dto\fmc7\constant\PFMHC005Constant$StateRollback.class
+com\bbva\pfmh\dto\fmc7\response\FMC7Response.class
+com\bbva\pfmh\dto\fmc7\constant\PFMHC005Constant$HostProperties.class
+com\bbva\pfmh\dto\fmc7\constant\PFMHC005Constant.class

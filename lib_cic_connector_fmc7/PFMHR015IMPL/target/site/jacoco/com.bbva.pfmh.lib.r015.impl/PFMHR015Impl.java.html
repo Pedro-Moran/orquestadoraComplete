@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PFMHR015Impl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PFMHR015IMPL</a> &gt; <a href="index.source.html" class="el_package">com.bbva.pfmh.lib.r015.impl</a> &gt; <span class="el_source">PFMHR015Impl.java</span></div><h1>PFMHR015Impl.java</h1><pre class="source lang-java linenums">package com.bbva.pfmh.lib.r015.impl;
+
+import com.bbva.apx.exception.business.BusinessException;
+import com.bbva.elara.utility.interbackend.cics.dto.HostAttributeResponse;
+import com.bbva.elara.utility.interbackend.cics.dto.SendMessageResponse;
+import com.bbva.pfmh.dto.fmc7.constant.PFMHC005Constant;
+import com.bbva.pfmh.dto.fmc7.ffmm.FFMM7;
+import com.bbva.pfmh.dto.fmc7.pague.FFMMPagination;
+import com.bbva.pfmh.dto.fmc7.request.FMC7Request;
+import com.bbva.pfmh.dto.fmc7.response.FMC7Response;
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+<span class="fc" id="L23">public class PFMHR015Impl extends PFMHR015Abstract {</span>
+
+<span class="fc" id="L25">	private static final Logger LOGGER = LoggerFactory.getLogger(PFMHR015Impl.class);</span>
+
+	@Override
+	public FMC7Response executeFMC7(FMC7Request request) {
+<span class="fc" id="L29">		return executeInternalApiCicsConector(request);</span>
+	}
+
+	private FMC7Response executeInternalApiCicsConector(FMC7Request request) {
+<span class="fc" id="L33">		LOGGER.info(&quot;***** PFMHR015Impl - executeInternalApiCicsConector START ***** request: {}&quot;, request);</span>
+<span class="fc" id="L34">		Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();</span>
+
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		if (request.getNumCli() != null) {</span>
+<span class="fc" id="L37">			params.put(PFMHC005Constant.HostFMC7FieldsIn.NUMCLIE, request.getNumCli());</span>
+		}
+<span class="fc" id="L39">		params.put(PFMHC005Constant.HostFMC7FieldsIn.INDPAGI, request.getIndPagi());</span>
+<span class="fc" id="L40">		params.put(PFMHC005Constant.HostFMC7FieldsIn.TAMPAGI, request.getTamPagi());</span>
+
+<span class="fc" id="L42">		LOGGER.info(&quot;***** PFMHR015Impl - params: {}&quot;, params);</span>
+
+<span class="fc" id="L44">		FMC7Response response = new FMC7Response();</span>
+
+		try {
+<span class="fc" id="L47">			SendMessageResponse sendMessageResponse = this.interBackendCicsUtils.invokeCics(PFMHC005Constant.HostProperties.CICS_KEY_CONNECTION, PFMHC005Constant.HostProperties.FFMM7, params);</span>
+<span class="fc" id="L48">			LOGGER.info(&quot;sendMessageResponse :: {}&quot;, sendMessageResponse);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">			if (sendMessageResponse.getHostAdvices().isEmpty()) {</span>
+<span class="fc" id="L50">				LOGGER.info(&quot;Status OK&quot;);</span>
+<span class="fc" id="L51">				this.mapperFMC7(sendMessageResponse.getAttributeResponses(), response);</span>
+<span class="fc" id="L52">				LOGGER.info(&quot;FMC7Response: {}&quot;, response);</span>
+			} else {
+<span class="fc" id="L54">				LOGGER.info(&quot;Response {}&quot;, sendMessageResponse);</span>
+<span class="fc" id="L55">				LOGGER.info(&quot;Code: {} Description: {}&quot;, sendMessageResponse.getHostAdvices().get(0).getCode(), sendMessageResponse.getHostAdvices().get(0).getDescription());</span>
+<span class="fc" id="L56">				response.setHostAdviceCode(sendMessageResponse.getHostAdvices().get(0).getCode());</span>
+<span class="fc" id="L57">				response.setHostMessage(sendMessageResponse.getHostAdvices().get(0).getDescription());</span>
+			}
+
+<span class="fc" id="L60">		} catch (BusinessException e) {</span>
+<span class="fc" id="L61">			LOGGER.info(&quot;[executeInternalApiCicsConector] Error al consumir Host: {}&quot;, ExceptionUtils.getStackTrace(e));</span>
+<span class="fc" id="L62">			getHostAdvice(response, e);</span>
+<span class="fc" id="L63">			LOGGER.info(&quot;[executeInternalApiCicsConector] FMC7Response Advice = [{}] , message = [{}]&quot;, response.getHostAdviceCode(), response.getHostMessage());</span>
+<span class="fc" id="L64">		}</span>
+<span class="fc" id="L65">		LOGGER.info(&quot;***** PFMHR015Impl - executeInternalApiCicsConector END *****&quot;);</span>
+<span class="fc" id="L66">		return response;</span>
+	}
+
+	private void mapperFMC7(List&lt;HostAttributeResponse&gt; result, FMC7Response response) {
+<span class="fc" id="L70">		List&lt;FFMM7&gt; list = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		for (HostAttributeResponse res : result) {</span>
+<span class="fc" id="L73">			LOGGER.info(&quot;mapperFMC7 - res.getFormat(): {}&quot;, res.getFormat());</span>
+
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">			if (res.getFormat().trim().equalsIgnoreCase(PFMHC005Constant.HostProperties.FFMM7)) {</span>
+<span class="fc" id="L76">				String value = res.getValue();</span>
+<span class="fc" id="L77">				int index = 0;</span>
+
+				try {
+<span class="fc" id="L80">					FFMM7 ffmm7 = new FFMM7();</span>
+
+<span class="fc" id="L82">					ffmm7.setIdContr(extractString(value, index, 20));</span>
+<span class="fc" id="L83">					index += 20;</span>
+<span class="fc" id="L84">					ffmm7.setNumCuot(extractBigDecimal(value, index, 17, 8));</span>
+<span class="fc" id="L85">					index += 17;</span>
+<span class="fc" id="L86">					ffmm7.setSalDisp(extractBigDecimal(value, index, 17, 2));</span>
+<span class="fc" id="L87">					index += 17;</span>
+<span class="fc" id="L88">					ffmm7.setdMonEsd(extractString(value, index, 3));</span>
+<span class="fc" id="L89">					index += 3;</span>
+<span class="fc" id="L90">					ffmm7.setIdSubPr(extractString(value, index, 4));</span>
+<span class="fc" id="L91">					index += 4;</span>
+<span class="fc" id="L92">					ffmm7.setdSubPro(extractString(value, index, 50));</span>
+<span class="fc" id="L93">					index += 50;</span>
+<span class="fc" id="L94">					ffmm7.setIdMonFn(extractString(value, index, 35));</span>
+<span class="fc" id="L95">					index += 35;</span>
+<span class="fc" id="L96">					ffmm7.setSalCont(extractBigDecimal(value, index, 17, 2));</span>
+<span class="fc" id="L97">					index += 17;</span>
+<span class="fc" id="L98">					ffmm7.setValCuot(extractBigDecimal(value, index, 17, 8));</span>
+<span class="fc" id="L99">					index += 17;</span>
+<span class="fc" id="L100">					ffmm7.setcTipNum(extractString(value, index, 1));</span>
+<span class="fc" id="L101">					index += 1;</span>
+<span class="fc" id="L102">					ffmm7.setdTipNum(extractString(value, index, 30));</span>
+
+<span class="fc" id="L104">					list.add(ffmm7);</span>
+<span class="nc" id="L105">				} catch (BusinessException e) {</span>
+<span class="nc" id="L106">					LOGGER.error(&quot;Error al procesar el valor: {}. Índices fuera de rango o datos inválidos.&quot;, value, e);</span>
+<span class="fc" id="L107">				}</span>
+			}
+<span class="fc" id="L109">		}</span>
+
+<span class="fc" id="L111">		response.setFfmm7(list);</span>
+<span class="fc" id="L112">	}</span>
+
+	public FFMMPagination mapPaginationFFMM(final FFMMPagination ffmmPagination) {
+<span class="fc bfc" id="L115" title="All 2 branches covered.">		if (ffmmPagination == null) {</span>
+<span class="fc" id="L116">			return null;</span>
+		}
+<span class="fc" id="L118">		FFMMPagination pagination = new FFMMPagination();</span>
+<span class="fc" id="L119">		pagination.setIdpagin(ffmmPagination.getIdpagin());</span>
+<span class="fc" id="L120">		pagination.setTampagi(ffmmPagination.getTampagi());</span>
+
+<span class="fc" id="L122">		return pagination;</span>
+	}
+
+	private String extractString(String value, int startIndex, int length) {
+<span class="fc" id="L126">		return safeSubstring(value, startIndex, startIndex + length).trim();</span>
+	}
+
+	private BigDecimal extractBigDecimal(String value, int startIndex, int length, int scale) {
+<span class="fc" id="L130">		String substring = safeSubstring(value, startIndex, startIndex + length);</span>
+<span class="fc" id="L131">		return cleanAndConvertToBigDecimal(substring).movePointLeft(scale);</span>
+	}
+
+	private BigDecimal cleanAndConvertToBigDecimal(String value) {
+<span class="pc bpc" id="L135" title="2 of 4 branches missed.">		if (value == null || value.trim().isEmpty()) {</span>
+<span class="nc" id="L136">			return BigDecimal.ZERO;</span>
+		}
+<span class="fc" id="L138">		String cleanedValue = value.trim().replaceAll(&quot;\\D&quot;, &quot;&quot;);</span>
+<span class="fc" id="L139">		return new BigDecimal(cleanedValue);</span>
+	}
+
+	private String safeSubstring(String value, int beginIndex, int endIndex) {
+<span class="pc bpc" id="L143" title="4 of 8 branches missed.">		if (value == null || beginIndex &lt; 0 || endIndex &gt; value.length() || beginIndex &gt; endIndex) {</span>
+<span class="nc" id="L144">			return &quot;&quot;;</span>
+		}
+<span class="fc" id="L146">		return value.substring(beginIndex, endIndex);</span>
+	}
+
+
+	private void getHostAdvice(FMC7Response response, BusinessException e) {
+<span class="fc" id="L151">		String[] errors = e.getMessage().split(&quot;;&quot;);</span>
+<span class="fc" id="L152">		String messageAdvice = errors[1].replace(&quot;HostAdvice&quot;, &quot;&quot;).trim();</span>
+<span class="fc" id="L153">		messageAdvice = messageAdvice.substring(2, messageAdvice.length() - 2);</span>
+<span class="fc" id="L154">		Map&lt;String, String&gt; map = Arrays.stream(messageAdvice.split(&quot;,&quot;))</span>
+<span class="fc" id="L155">				.map(s -&gt; s.replace(&quot;'&quot;, &quot;&quot;).split(&quot;=&quot;))</span>
+<span class="fc" id="L156">				.collect(Collectors.toMap(s -&gt; s[0].trim(), s -&gt; s[1].trim()));</span>
+<span class="fc" id="L157">		response.setHostAdviceCode(map.get(&quot;code&quot;));</span>
+<span class="fc" id="L158">		response.setHostMessage(map.get(&quot;description&quot;));</span>
+<span class="fc" id="L159">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

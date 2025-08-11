@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.bbva.elara</groupId>
+		<artifactId>elara-project</artifactId>
+		<version>8.0.11</version>
+	</parent>
+	<groupId>com.bbva.pfmh.dto.fmc7</groupId>
+	<artifactId>PFMHC005</artifactId>
+	<version>0.6.3</version>
+	<packaging>bundle</packaging>
+	<description>Deployment unit dto_cics_ffmm of uuaa pfmh</description>
+	<properties>
+		<osgi.version.manifest>0.0</osgi.version.manifest>
+		<sonar.coverage.exclusions>
+			/src/main/java/com/bbva/pfmh/dto/fmc7/request/**.java,
+			/src/main/java/com/bbva/pfmh/dto/fmc7/response/**.java,
+			/src/main/java/com/bbva/pfmh/dto/fmc7/ffmm/**.java,
+			/src/main/java/com/bbva/pfmh/dto/fmc7/constant/**.java,
+			/src/main/java/com/bbva/pfmh/dto/fmc7/pague/**.java,
+		</sonar.coverage.exclusions>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}-${project.version}</Bundle-SymbolicName>
+						<Bundle-Category>dto</Bundle-Category>
+						<Import-Package>
+							*;version="${osgi.version.manifest}"
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

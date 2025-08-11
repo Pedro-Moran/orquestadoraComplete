@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.bbva.pfmh.lib.r015.impl.PFMHR015ImplTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.437 s -- in com.bbva.pfmh.lib.r015.impl.PFMHR015ImplTest

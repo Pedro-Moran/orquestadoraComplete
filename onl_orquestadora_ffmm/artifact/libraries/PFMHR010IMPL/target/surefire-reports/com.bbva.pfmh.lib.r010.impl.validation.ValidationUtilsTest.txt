@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.bbva.pfmh.lib.r010.impl.validation.ValidationUtilsTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.bbva.pfmh.lib.r010.impl.validation.ValidationUtilsTest

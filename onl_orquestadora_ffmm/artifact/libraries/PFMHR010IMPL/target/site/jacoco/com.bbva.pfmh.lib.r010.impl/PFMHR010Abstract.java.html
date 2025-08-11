@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PFMHR010Abstract.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PFMHR010IMPL</a> &gt; <a href="index.source.html" class="el_package">com.bbva.pfmh.lib.r010.impl</a> &gt; <span class="el_source">PFMHR010Abstract.java</span></div><h1>PFMHR010Abstract.java</h1><pre class="source lang-java linenums">package com.bbva.pfmh.lib.r010.impl;
+
+import com.bbva.elara.configuration.manager.application.ApplicationConfigurationService;
+import com.bbva.elara.library.AbstractLibrary;
+import com.bbva.pfmh.lib.r010.PFMHR010;
+import com.bbva.pfmh.lib.r010.impl.cics.FMC7Connection;
+import com.bbva.pfmh.lib.r015.PFMHR015;
+
+/**
+ * This class automatically defines the libraries and utilities that it will use.
+ */
+<span class="fc" id="L12">public abstract class PFMHR010Abstract extends AbstractLibrary implements PFMHR010 {</span>
+
+	protected ApplicationConfigurationService applicationConfigurationService;
+
+	protected PFMHR015 pfmhR015;
+
+	protected FMC7Connection fmc7Connection;
+
+
+	/**
+	* @param applicationConfigurationService the this.applicationConfigurationService to set
+	*/
+	public void setApplicationConfigurationService(ApplicationConfigurationService applicationConfigurationService) {
+<span class="fc" id="L25">		this.applicationConfigurationService = applicationConfigurationService;</span>
+<span class="fc" id="L26">	}</span>
+
+	/**
+	 * @param pfmhR015 the this.pfmhR015 to set
+	 */
+	public void setPfmhR015(PFMHR015 pfmhR015) {
+<span class="fc" id="L32">		this.pfmhR015 = pfmhR015;</span>
+<span class="fc" id="L33">	}</span>
+
+	public void setFmc7Connection(FMC7Connection fmc7Connection) {
+<span class="fc" id="L36">		this.fmc7Connection = fmc7Connection;</span>
+<span class="fc" id="L37">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

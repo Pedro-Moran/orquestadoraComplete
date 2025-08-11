@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1754173385214
+Build-Jdk-Spec: 11
+Bundle-Category: library
+Bundle-Description: Deployment unit lib_cic_connector_fmc7 of uuaa pfmh
+Bundle-ManifestVersion: 2
+Bundle-Name: PFMHR015
+Bundle-SymbolicName: PFMHR015-0.1.0
+Bundle-Version: 0.1.0
+Created-By: Apache Maven Bundle Plugin 5.1.9
+Export-Package: com.bbva.pfmh.lib.r015;uses:="com.bbva.pfmh.dto.fmc7.req
+ uest,com.bbva.pfmh.dto.fmc7.response";version="0.1.0"
+Import-Package: com.bbva.pfmh.dto.fmc7.request;version="0.0",com.bbva.pf
+ mh.dto.fmc7.response;version="0.0",java.lang
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Tool: Bnd-6.3.1.202206071316

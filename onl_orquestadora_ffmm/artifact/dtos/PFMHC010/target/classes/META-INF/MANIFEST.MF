@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1754689603537
+Build-Jdk-Spec: 11
+Bundle-Category: dto
+Bundle-Description: dto para connector cics
+Bundle-ManifestVersion: 2
+Bundle-Name: PFMHC010
+Bundle-SymbolicName: PFMHC010-0.6.0
+Bundle-Version: 0.6.0
+Created-By: Apache Maven Bundle Plugin 5.1.9
+Export-Package: com.bbva.pfmh.dto.jcisconnector.ffmm.attributes;version=
+ "0.6.0",com.bbva.pfmh.dto.jcisconnector.ffmm.commons;uses:="com.bbva.pf
+ mh.dto.jcisconnector.ffmm.investmen";version="0.6.0",com.bbva.pfmh.dto.
+ jcisconnector.ffmm.investmen;uses:="com.bbva.pfmh.dto.jcisconnector.ffm
+ m.attributes";version="0.6.0"
+Import-Package: com.bbva.pfmh.dto.jcisconnector.ffmm.attributes;version=
+ "0.0",com.bbva.pfmh.dto.jcisconnector.ffmm.investmen;version="0.0",java
+ .io,java.lang,java.lang.invoke,java.math,java.text,java.util,java.util.
+ function,java.util.stream
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Tool: Bnd-6.3.1.202206071316
