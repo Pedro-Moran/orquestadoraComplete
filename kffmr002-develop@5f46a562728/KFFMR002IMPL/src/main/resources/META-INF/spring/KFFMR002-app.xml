@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+	<bean id="kffmR002" class="com.bbva.kffm.lib.r002.impl.KFFMR002Impl" parent="kffmR002Abstract">
+		<property name="j6eaR021" ref="j6eaR021"/>
+		<property name="ksanR101" ref="ksanR101"/>
+		<property name="j6ecR021" ref="j6ecR021"/>
+	</bean>
+</beans>

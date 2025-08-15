@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+	<osgi:reference id="j6eaR021" interface="com.bbva.j6ea.lib.r021.J6EAR021"/>
+	<osgi:reference id="ksanR101" interface="com.bbva.ksan.lib.r101.KSANR101"/>
+	<osgi:reference id="j6ecR021" interface="com.bbva.j6ec.lib.r021.J6ECR021"/>
+</beans>
